@@ -30,8 +30,9 @@ def main():
             basket.check_out()
 
         else:
+            codes = [code.strip() for code in codes]
             for item in codes:
-                if item.strip() not in prices:
+                if item not in prices:
                     print("{} is not a valid item".format(item))
                 else:
                     try:
