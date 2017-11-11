@@ -17,6 +17,11 @@ class TestBasket(unittest.TestCase):
         self.basket.check_out()
         self.assertEqual(len(self.basket.items), 0)
 
+    def test_checkout(self):
+        self.basket.add_items('CH1, AP1, CF1, MK1')
+        self.basket.check_out()
+        self.assertEqual(len(self.basket.items), 0)
+
     def test_milk_dis(self):
         self.basket.add_items('CH1, AP1, CF1, MK1')
         self.assertAlmostEqual(self.basket.total(), 20.34, places=2)
