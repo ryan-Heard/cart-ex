@@ -10,38 +10,32 @@ class Basket:
     def __init__(self):
         self.items = []
         self.item_objs = []
-        self.disc_cup = {'name': 'BOGO', 'disc': 11.23}
-        self.disc_apple_bag = {'name': 'APPL', 'disc': 4.50}
-        self.disc_oatmeal = {'name': 'APOM', 'disc': .5}
-        self.disc_milk = {'name': 'CHMK', 'disc': 4.75}
+        self.disc_cup = {'name': 'BOGO', 'disc': -11.23}
+        self.disc_apple_bag = {'name': 'APPL', 'disc': -4.50}
+        self.disc_oatmeal = {'name': 'APOM', 'disc': "%50"}
+        self.disc_milk = {'name': 'CHMK', 'disc': -4.75}
 
     def print_cart(self):
         total = self.total()
-        data = """
-...
 
-Item                          Price
-----                          -----
-        """
+        data = "...\n\n"
+        data += "{: >0} {: >10} {: >10}\n".format("Item", " ", "Price")
+        data += "{: >0} {: >10} {: >10}\n".format("----", " ", "-----")
 
         for item in self.item_objs:
-            data += "\n{}".format(item['Code'])
-            data += " "*29
-            data += "{0:.2f}".format(prices[item['Code']]['Price'])
-
+            data += "{: >0} {: >10} {: >10.2f}\n".format(item['Code'],
+                                                         " ",
+                                                         prices[item['Code']]['Price'])
             # If price is different than item
-            print(prices[item['Code']]['Price'])
-            print(item['Price'])
             if item['Price'] != prices[item['Code']]['Price']:
-                print("this happened")
                 tmp_disc = self.get_discount_code(item)
-                data += "\n" + " "*17
-                data += "{}".format(tmp_disc['name'])
-                data += " "*10
-                data += "-{0:.2f}".format(tmp_disc['disc'])
+                data += "{: >0} {: >10} {: >12.2f}\n".format(" ",
+                                                             tmp_disc['name'],
+                                                             tmp_disc['disc'])
 
-        data += "\n"+"-"*38
-        data += "\n..." + (" "*29) + "{0:.2f}".format(total)
+        data += "-"*26
+        data += "\n"
+        data += "{: >0} {: >10} {: >10.2f}\n".format("...", " ",  total)
         data += "\n\n"
 
         print(data)
