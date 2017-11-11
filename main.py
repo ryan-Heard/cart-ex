@@ -13,6 +13,7 @@ def main():
         prices = json.load(json_data)
 
     print("Please type 'total' to see current total")
+    print("Please type 'checkout' to see current total and empty cart")
     print("Type 'q' to quit")
 
     while True:
@@ -24,9 +25,14 @@ def main():
         elif codes[0] == 'total':
             basket.print_cart()
 
+        elif codes[0] == 'checkout':
+            basket.print_cart()
+            basket.check_out()
+
         else:
+            codes = [code.strip() for code in codes]
             for item in codes:
-                if item.strip() not in prices:
+                if item not in prices:
                     print("{} is not a valid item".format(item))
                 else:
                     try:
