@@ -13,7 +13,7 @@ def main():
         prices = json.load(json_data)
 
     print("Please type 'total' to see current total")
-    print("Type 'checkout' to ring up the basket and 'q' to quit")
+    print("Type 'q' to quit")
 
     while True:
         codes = input("Please enter your codes seperated by ',': ").split(',')
