@@ -40,19 +40,19 @@ class Basket:
         data += "{: >0} {: >10} {: >10}\n".format("----", " ", "-----")
 
         for item in self.item_objs:
-            data += "{: >0} {: >10} {: >10.2f}\n".format(item['Code'],
+            data += "{: >4} {: >10} {: >10.2f}\n".format(item['Code'],
                                                          " ",
                                                          prices[item['Code']]['Price'])
             # If price is different than item
             if item['Price'] != prices[item['Code']]['Price']:
                 tmp_disc = self.get_discount_code(item)
-                data += "{: >0} {: >10} {: >12}\n".format(" ",
+                data += "{: >2} {: >10} {: >12}\n".format(" ",
                                                              tmp_disc['name'],
                                                              tmp_disc['visual'])
 
         data += "-"*26
         data += "\n"
-        data += "{: >4} {: >10} {: >8}\n".format("...", " ",  total)
+        data += "{: >4} {: >10} {: >10}\n".format("...", " ",  total)
         data += "\n\n"
 
         logger.info("printed cart")

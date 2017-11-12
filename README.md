@@ -12,10 +12,11 @@ Simple Discount Cart
 
 
 <h2>Notes</h2>
-1) The .5 bags rule is ambigous. I have have applied so that it can stack with the APPL rule<br><br>
+1) The .5 bags rule is ambiguous. I have applied so that it can stack with the APPL rule
+<br><br>
 
 <h2>Improvement:</h2>
 <ol>
-<li>If I had time I would have set up a db to pull these things from. I would have loved to add a feature that has dates so that the cart would prefrom normal when the features become invalid</li>
+<li>If I had time I would have set up a db to pull these things from. I would have loved to add a feature that has dates so that the cart would perform normal when the features become invalid</li>
 <li>UI is simple but making it into a full blown webapp could give the interface more graphics. </li>
 </ol>
