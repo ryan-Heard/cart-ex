@@ -1,5 +1,18 @@
 from basket import Basket
 import json
+import logging
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+
+handler = logging.FileHandler('basket.log')
+handler.setLevel(logging.INFO)
+
+
+formatter = logging.Formatter('%(asctime)s-%(name)s-%(levelname)s-%(message)s')
+handler.setFormatter(formatter)
+
+logger.addHandler(handler)
 
 
 def main():
@@ -18,7 +31,7 @@ def main():
 
     while True:
         codes = input("Please enter your codes seperated by ',': ").split(',')
-
+        logger.info(codes)
         if codes[0] == 'q':
             break
 
@@ -33,12 +46,14 @@ def main():
             codes = [code.strip() for code in codes]
             for item in codes:
                 if item not in prices:
-                    print("{} is not a valid item".format(item))
+                    logger.error("{} is not a code or command".format(item))
+                    print("{} is not a code or command".format(item))
                 else:
                     try:
                         basket.add_items(item)
                     except Exception as e:
-                        print("Not a code or command")
+                        logger.error(e)
+
 
 if __name__ == '__main__':
     main()

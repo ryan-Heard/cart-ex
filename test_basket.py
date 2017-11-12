@@ -44,21 +44,21 @@ class TestBasket(unittest.TestCase):
     def test_get_disc(self):
         item = {'Code': 'AP1', 'Price': 4.50}
         self.assertEqual(self.basket.get_discount_code(item),
-                         {'name': 'APPL', 'disc': 4.50})
+                         {'name': 'APPL', 'disc': 4.50, 'visual': "-4.50"})
         item = {'Code': 'AP1', 'Price': 2.25}
         self.assertEqual(self.basket.get_discount_code(item),
-                         {'name': 'APOM', 'disc': .5})
+                         {'name': 'APOM', 'disc': .5, 'visual': "-50%"})
         item = {'Code': 'AP1', 'Price': 3.00}
         self.assertEqual(self.basket.get_discount_code(item),
-                         {'name': 'APOM', 'disc': .5})
+                         {'name': 'APOM', 'disc': .5, 'visual': "-50%"})
 
         item = {'Code': 'MK1', 'Price': 0}
         self.assertEqual(self.basket.get_discount_code(item),
-                         {'name': 'CHMK', 'disc': 4.75})
+                         {'name': 'CHMK', 'disc': 4.75, 'visual': "-4.75"})
 
         item = {'Code': 'CF1', 'Price': 0}
         self.assertEqual(self.basket.get_discount_code(item),
-                         {'name': 'BOGO', 'disc': 11.23})
+                         {'name': 'BOGO', 'disc': 11.23, 'visual': "-11.23"})
 
     def test_APPL_disc(self):
         self.basket.add_items('AP1, AP1, CH1, AP1')
